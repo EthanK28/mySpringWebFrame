@@ -24,6 +24,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkonweb.springmvc.dao.UserDao;
 import com.thinkonweb.springmvc.service.UserService;
@@ -139,6 +140,7 @@ public class UserServiceTest {
 	}
 
 	@Test 
+	@Transactional(readOnly=true)
 	public void add() {
 		userDao.deleteAll();
 		
