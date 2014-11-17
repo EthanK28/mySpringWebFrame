@@ -5,6 +5,7 @@ public class User {
 	String name;
 	String password;
 	String email;
+	String profession;
 	Level level;
 	int login;
 	int recommend;
@@ -42,6 +43,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getProfession() {
+		return profession;
+	}
+
+	public void setProfession(String profession) {
+		this.profession = profession;
 	}
 
 	public Level getLevel() {

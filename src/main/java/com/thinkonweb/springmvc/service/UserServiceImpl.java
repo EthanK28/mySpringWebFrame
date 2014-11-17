@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkonweb.springmvc.dao.UserDao;
+import com.thinkonweb.springmvc.dao.UserRoleDao;
 import com.thinkonweb.springmvc.domain.Level;
 import com.thinkonweb.springmvc.domain.User;
+import com.thinkonweb.springmvc.domain.UserRole;
 
 @Service("userService")
 @Transactional
@@ -19,11 +21,17 @@ public class UserServiceImpl implements UserService {
 	public static final int MIN_RECCOMEND_FOR_GOLD = 30;
 
 	private UserDao userDao;
+	private UserRoleDao userRoleDao;
 	private MailSender mailSender;
 
 	@Autowired
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+	
+	@Autowired
+	public void setUserRoleDao(UserRoleDao userRoleDao) {
+		this.userRoleDao = userRoleDao;
 	}
 
 	@Autowired
@@ -33,7 +41,9 @@ public class UserServiceImpl implements UserService {
 	
 	public void add(User user) {
 		if (user.getLevel() == null) user.setLevel(Level.BASIC);
-		userDao.add(user);
+		this.userDao.add(user);
+		UserRole userRole = new UserRole(user.getId(), "ROLE_USER");
+		this.userRoleDao.add(userRole);
 	}
 
 	public void upgradeLevels() {
