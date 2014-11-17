@@ -74,7 +74,6 @@ public class HomeController {
  
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
-	  System.out.println("!!!!!");
 	  ModelAndView model = new ModelAndView();
 	  if (error != null) {
 		model.addObject("error", "Invalid username and password!");
