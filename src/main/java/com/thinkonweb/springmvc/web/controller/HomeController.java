@@ -90,10 +90,7 @@ public class HomeController {
  
 	//for 403 access denied page
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
-	public ModelAndView accesssDenied() {
- 
-	  ModelAndView model = new ModelAndView();
- 
+	public ModelAndView accesssDenied(ModelAndView model) {
 	  //check if user is login
 	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	  
@@ -103,6 +100,21 @@ public class HomeController {
 	  }
  
 	  model.setViewName("403");
+	  return model;
+ 	}
+	
+	@RequestMapping(value = "/myinfo", method = RequestMethod.GET)
+	public ModelAndView myinfo(ModelAndView model) {
+	  //check if user is login
+	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	  
+	  if (!(auth instanceof AnonymousAuthenticationToken)) {
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		User user = this.userService.get(userDetail.getUsername());
+		model.addObject("user", user);
+	  }
+	  
+	  model.setViewName("myinfo");
 	  return model;
  	}
 }

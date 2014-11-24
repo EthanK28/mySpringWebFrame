@@ -35,7 +35,7 @@
 }
 </style>
 </head>
-<body onload='document.loginForm.username.focus();'>
+<body onload='document.loginForm.id.focus();'>
  
 	<h1>Spring Security Login Form (Database Authentication)</h1>
  
@@ -62,14 +62,9 @@
 				<td><input type='password' name='password' /></td>
 			</tr>
 			<tr>
-				<td colspan='2'><input name="submit" type="submit"
-				  value="submit" /></td>
+				<td colspan='2'><input name="submit" type="submit" value="submit" /></td>
 			</tr>
-		  </table>
- 
-		  <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
- 
+		  </table> 
 		</form>
 	</div>
  
