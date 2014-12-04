@@ -1,5 +1,9 @@
 package com.thinkonweb.springmvc.domain;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "User")
 public class User {
 	String id;
 	String name;
@@ -25,13 +29,15 @@ public class User {
 		this.recommend = recommend;
 	}
 
-
+	@XmlElement
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -44,6 +50,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	@XmlElement
 	public String getProfession() {
 		return profession;
 	}
@@ -52,6 +60,7 @@ public class User {
 		this.profession = profession;
 	}
 
+	@XmlElement
 	public Level getLevel() {
 		return level;
 	}
@@ -60,6 +69,7 @@ public class User {
 		this.level = level;
 	}
 
+	@XmlElement
 	public int getLogin() {
 		return login;
 	}
@@ -68,6 +78,7 @@ public class User {
 		this.login = login;
 	}
 
+	@XmlElement
 	public int getRecommend() {
 		return recommend;
 	}
@@ -76,6 +87,7 @@ public class User {
 		this.recommend = recommend;
 	}
 	
+	@XmlElement
 	public String getEmail() {
 		return email;
 	}
